@@ -1,0 +1,4 @@
+FROM ubuntu:latest
+RUN apt-get update --fix-missing
+RUN apt-get install -y openssh-server
+CMD ["/usr/sbin/sshd", "-D"]

@@ -2,43 +2,7 @@
 
 $:.unshift File.join(File.dirname(__FILE__), "../lib")
 
-require 'json'
-require 'nmap/program'
 require 'nmap_agent'
 
-# Perform Scan
-
-Nmap::Program.scan do |nmap|
-  nmap.service_scan = false
-  nmap.os_fingerprint = false
-  nmap.xml = 'current.xml'
-  
-  # Example: 20,21,22,23,25,80,110,443,512,522,8080,1080
-  nmap.ports = ENV['SCAN_TCP_PORTS'].split(",")
-
-  # Example: 192.168.0.*
-  nmap.targets = ENV['SCAN_NETWORK']
-end
-
-# Parse scan's open ports into simplified Hash/JSON
-
-require 'nmap/xml'
-
-scan = {}
-
-Nmap::XML.new('current.xml') do |xml|
-  xml.each_host do |host|
-    # Don't list a host if it doesn't have open ports
-    next if host.open_ports.empty?
-    scan[host.ip] = []
-    host.each_port do |port|
-      # Require port state to be open, we don't care about non-open ports
-      if port.state == :open
-        scan[host.ip] << {:port => port.number, :protocol => port.protocol, :state => port.state}
-      end
-    end
-  end
-end
-
-# Post scan to API endpoint
-puts scan.to_json
+agent = Agent.new()
+puts agent.run.to_json
