@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  nmap-agent:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - default
+    restart: always
+    working_dir: /app
+    environment:
+      - SCAN_NETWORK=192.168.0.*
+      - SCAN_TCP_PORTS=20,21,22,23,25,80,110,443,512,522,8080,1080
+    command: ["/app/bin/scan"]
