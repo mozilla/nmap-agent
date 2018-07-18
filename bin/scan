@@ -5,4 +5,6 @@ $:.unshift File.join(File.dirname(__FILE__), "../lib")
 require 'nmap_agent'
 
 agent = Agent.new()
+
+#TODO: send to central store, like S3 (maybe we'll have multiple binaries to make this easier)
 puts agent.run.to_json
