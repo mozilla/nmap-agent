@@ -20,7 +20,7 @@ Benefits:
       * Scan from Docker => Docker Network
       * Scan from Docker => VPC
       
-# S3 bucket
+# S3 bucket (server)
 
 A simple receiving location for Simplified JSON port scan data
 
