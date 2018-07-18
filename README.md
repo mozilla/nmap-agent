@@ -1,6 +1,6 @@
-# nmap-agent
+# nmap-agent (client)
 
-A tool that performs NMAP scans and posts the results in JSON back to a central receiving node for post analysis
+A container that performs NMAP scans and posts the results in JSON back to a central receiving node for post analysis
 
 Inputs:
   - target(s)
@@ -20,7 +20,7 @@ Benefits:
       * Scan from Docker => Docker
       * Scan from Docker => VPC
       
-# nmap-agent-server
+# nmap-agent-server (server)
 
 A simple receiving endpoint for Simplified JSON port scan data
 
