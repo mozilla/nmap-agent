@@ -1,6 +1,6 @@
-# nmap-agent (starting point - containerized thing)
+# nmap-agent
 
-A tool that performs NMAP scans and posts the results in JSON back to a central receiving node for analysis
+A tool that performs NMAP scans and posts the results in JSON back to a central receiving node for post analysis
 
 Inputs:
   - target(s)
@@ -19,12 +19,15 @@ Benefits:
       * Scan from Docker => Prod Endpoint
       * Scan from Docker => Docker
       * Scan from Docker => VPC
+      
+# nmap-agent-server
 
+A simple receiving endpoint for Simplified JSON port scan data
 
-# nmap-2-json (library it uses)
+# nmap2json (library)
 
-turns NMAP XML => JSON
+turns NMAP XML => Simplified JSON for devops magic
 
-# nmap-unit-tests/nmap-policy (library) (after we have the data, we can process it, but maybe you want that locally, maybe it's live on the agent, I dunno)
+# nmap-policy (library)
 
-A tool to build unit-tests for NMAP expectations and alert when those expectations are not met
+a library that compares NMAP results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition that may require further investigation.
