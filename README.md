@@ -11,7 +11,7 @@ Outputs
   - Simplified JSON result (based on NMAP XML) to a centralized data store
 
 Benefits:
-  - simplified format, extremely easy for post processing
+  - simplified format
   - deployable via docker
   - pass inputs via ENV vars
   - No running services
@@ -24,9 +24,29 @@ Benefits:
 
 A simple receiving endpoint for Simplified JSON port scan data
 
+Inputs:
+  - Uploads of Simplified JSON scan results via write only access (limit exposure if a single node is corrupted)
+  
+Outputs:
+  - S3 bucket of Simplified JSON scan results via read-only access (limit exposure if policy node is corrupted)
+  
+Benefits:
+  - No web application to secure/maintain
+  - Easy access to raw data for alternative uses
+  - Easy programmatics access to data store
+  - AWS/DevOps friendly
+
 # nmap2json (library)
 
-turns NMAP XML => Simplified JSON
+Inputs:
+  - NMAP scan XML
+  
+Outputs:
+  - Simplified scan result JSON
+
+Benefits:
+  - Removes the burden of NMAP XML parsing for downstream processing
+  - JSON is easily parsable by just about any programming lang
 
 # nmap-policy (library)
 
