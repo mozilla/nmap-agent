@@ -20,9 +20,9 @@ Benefits:
       * Scan from Docker => Docker Network
       * Scan from Docker => VPC
       
-# nmap-agent-server (server) / S3 bucket
+# S3 bucket
 
-A simple receiving endpoint for Simplified JSON port scan data
+A simple receiving location for Simplified JSON port scan data
 
 Inputs:
   - Uploads of Simplified JSON scan results via write only access (limit exposure if a single node is corrupted)
