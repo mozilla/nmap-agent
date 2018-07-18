@@ -22,8 +22,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.executables   = s.files.grep(%r{^bin/[^\/]+$}) { |f| File.basename(f) }
   s.summary = 'nmap agent'
-  s.description = 'An agent to allow nmap to scan and report back simplified JSON to an arbitrary REST endpoint'
+  s.description = 'An agent to allow nmap to scan and report back simplified JSON to a centralized data store (likely S3)'
   s.homepage = 'http://rubygems.org/gems/nmap_agent'
 
   s.add_dependency('ruby-nmap', '0.9.3')
+  s.add_dependency('aws-sdk')
 end

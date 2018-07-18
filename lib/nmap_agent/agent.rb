@@ -2,16 +2,12 @@ require 'json'
 require 'nmap_agent'
 require 'nmap/program'
 require 'nmap/xml'
-require 'nmap_agent/output_helper'
 
 class Agent
-  def run(file='latest.xml')
-    port_scan(file)
-    parse(file)
-  end
-
   def port_scan(output_file='latest.xml')
-    #suppress_output do
+    puts "[+] Started scanning #{ENV['SCAN_NETWORK']}"
+    
+    suppress_output do
       Nmap::Program.scan do |nmap|
         nmap.service_scan = false
         nmap.os_fingerprint = false
@@ -26,7 +22,9 @@ class Agent
         # -Pn
         nmap.skip_discovery
       end
-    #end
+    end
+
+    puts "[+] Finished scanning #{ENV['SCAN_NETWORK']}"
   end
 
   def parse(input_file='latest.xml')
@@ -48,4 +46,24 @@ class Agent
 
     scan
   end
+
+  def send2s3(upload_file='latest.xml')
+    key = ENV['SCAN_NETWORK'].gsub(/\//,"_") + ".json"
+
+    puts "[+] Started uploading #{key} to S3"
+
+    client = Aws::S3::Client.new(
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    )
+
+    resp = client.put_object({
+      bucket: ENV['AWS_S3_BUCKET'],
+      key: key,
+      body: parse(upload_file).to_json,
+    })
+
+    puts "[+] Finished uploading #{key} to S3"
+  end
+
 end
