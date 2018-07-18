@@ -1,6 +1,6 @@
 # nmap-agent (client)
 
-A container that performs NMAP scans and posts the results in JSON back to a central data store for post analysis
+A container that performs NMAP scans and send results in JSON back to a central data store for post analysis
 
 Inputs:
   - target(s)
