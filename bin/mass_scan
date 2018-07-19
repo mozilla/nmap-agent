@@ -1,0 +1,12 @@
+# Simplified example of multi-scan idea where each target gets it's own container, making this scalable should we distribute the work to multiple scanning nodes...
+
+filename = ARGV[0]
+network_file = File.open(filename)
+
+system("docker build -t nmap-agent .")
+
+network_file.each_line do |network|
+  system(
+    "docker run -t -d -i -e SCAN_NETWORK='#{network.chomp}' -e SCAN_TCP_PORTS='20,21,22,23,25,80,110,443,512,522,8080,1080,22222' -e AWS_REGION='INSERT_AWS_REGION' -e AWS_S3_BUCKET='INSERT_AWS_S3_BUCKET' -e AWS_ACCESS_KEY_ID='INSERT_AWS_ACCESS_KEY_ID' -e AWS_SECRET_ACCESS_KEY='INSERT_AWS_SECRET_ACCESS_KEY' nmap-agent:latest /app/bin/scan"
+  )
+end

@@ -1,0 +1,9 @@
+language: ruby
+matrix:
+  include:
+  - rvm: ruby-head
+    env:
+      - LABEL=unit_tests
+  - rvm: 2.5.1
+    env:
+      - LABEL=unit_tests

@@ -5,13 +5,5 @@ $:.unshift File.join(File.dirname(__FILE__), "../lib")
 require 'nmap_agent'
 
 agent = Agent.new()
-
-loop do
-  agent.port_scan
-  agent.send2s3
-
-  # Number of seconds between next scan
-  cool_off = ENV['SCAN_COOLOFF'].to_i
-  puts "[+] Waiting #{cool_off} seconds until next scan" 
-  sleep cool_off
-end
+agent.port_scan
+agent.send2s3
