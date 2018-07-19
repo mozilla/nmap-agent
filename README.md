@@ -20,9 +20,9 @@ Benefits:
       * Scan from Docker => Docker Network
       * Scan from Docker => VPC
       
-# nmap-agent-server (server) / S3 bucket
+# S3 bucket (server)
 
-A simple receiving endpoint for Simplified JSON port scan data
+A simple receiving location for Simplified JSON port scan data
 
 Inputs:
   - Uploads of Simplified JSON scan results via write only access (limit exposure if a single node is corrupted)
@@ -36,18 +36,6 @@ Benefits:
   - Easy programmatics access to data store
   - AWS/DevOps friendly
 
-# nmap2json (library)
+# nmap-policy (library) - TO BE BUILT
 
-Inputs:
-  - NMAP scan XML
-  
-Outputs:
-  - Simplified scan result JSON
-
-Benefits:
-  - Removes the burden of NMAP XML parsing for downstream processing
-  - JSON is easily parsable by just about any programming lang
-
-# nmap-policy (library)
-
-a library that compares NMAP results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
+a library that compares Simplified NMAP JSON results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
