@@ -36,18 +36,6 @@ Benefits:
   - Easy programmatics access to data store
   - AWS/DevOps friendly
 
-# nmap2json (library) - TO BE ABSTRACTED
-
-Inputs:
-  - NMAP scan XML
-  
-Outputs:
-  - Simplified scan result JSON
-
-Benefits:
-  - Removes the burden of NMAP XML parsing for downstream processing
-  - JSON is easily parsable by just about any programming lang
-
 # nmap-policy (library) - TO BE BUILT
 
 a library that compares NMAP results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
