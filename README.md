@@ -38,4 +38,4 @@ Benefits:
 
 # nmap-policy (library) - TO BE BUILT
 
-a library that compares NMAP results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
+a library that compares Simplified NMAP JSON results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
