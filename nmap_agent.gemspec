@@ -3,7 +3,7 @@ require 'nmap_agent/version'
 require 'date'
 
 Gem::Specification.new do |s|
-  s.name = 'ssh_scan_worker'
+  s.name = 'nmap_agent'
   s.version = NmapAgent::VERSION
   s.authors = ["Jonathan Claudius" ]
   s.date = Date.today.to_s
