@@ -8,7 +8,7 @@ Inputs:
   - reporting endpoint
 
 Outputs
-  - Simplified JSON result (based on NMAP XML) to a centralized data store
+  - Raw NMAP XML results sent to S3
 
 Benefits:
   - simplified format
@@ -22,7 +22,7 @@ Benefits:
       
 # S3 bucket (server)
 
-A simple receiving location for Simplified JSON port scan data
+A receiving location for scan results
 
 Inputs:
   - Uploads scan results via write only access (limit exposure if a single node is corrupted)
