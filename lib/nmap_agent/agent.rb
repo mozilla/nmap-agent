@@ -40,7 +40,7 @@ class Agent
     resp = client.put_object({
       bucket: ENV['AWS_S3_BUCKET'],
       key: key,
-      body: upload_file,
+      body: File.read(upload_file),
     })
 
     puts "[+] Finished uploading #{key} to S3"
