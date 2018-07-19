@@ -8,7 +8,7 @@ Inputs:
   - reporting endpoint
 
 Outputs
-  - Simplified JSON result (based on NMAP XML) to a centralized data store
+  - Raw NMAP XML results sent to S3
 
 Benefits:
   - simplified format
@@ -22,7 +22,7 @@ Benefits:
       
 # S3 bucket (server)
 
-A simple receiving location for Simplified JSON port scan data
+A receiving location for scan results
 
 Inputs:
   - Uploads scan results via write only access (limit exposure if a single node is corrupted)
@@ -36,6 +36,10 @@ Benefits:
   - Easy programmatics access to data store
   - AWS/DevOps friendly
 
-# nmap-policy (library) - TO BE BUILT
+# nmap2json post processing (Lambda function)
 
-a library that compares Simplified NMAP JSON results to a predefined policy or set of expectation for a given perspective.  Failure to meet policy/expectations results in a failure condition.  User can wrap whatever they want around this to integrate with their escalation preferences.
+a simple lambda function, which is run on any file that changes in an S3 bucket ./xml folder and produces a simplified ./json equivalent.  JSON is simply an easier format to work with and reduces the barrier of entry for really anything to use this data, including the policy framework.
+
+# nmap-policy (TBD)
+
+a policy/expectations framework for simplified NMAP JSON files
