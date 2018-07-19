@@ -1,6 +1,6 @@
 # nmap-agent (client)
 
-A container that performs NMAP scans and send results in JSON back to a central data store for post analysis
+A container that performs NMAP scans and send results to S3 for post analysis
 
 Inputs:
   - target(s)
@@ -25,10 +25,10 @@ Benefits:
 A simple receiving location for Simplified JSON port scan data
 
 Inputs:
-  - Uploads of Simplified JSON scan results via write only access (limit exposure if a single node is corrupted)
+  - Uploads scan results via write only access (limit exposure if a single node is corrupted)
   
 Outputs:
-  - S3 bucket of Simplified JSON scan results via read-only access (limit exposure if policy node is corrupted)
+  - S3 bucket scan results via read-only access (limit exposure if policy node is corrupted)
   
 Benefits:
   - No web application to secure/maintain

@@ -27,28 +27,8 @@ class Agent
     puts "[+] Finished scanning #{ENV['SCAN_NETWORK']}"
   end
 
-  def parse(input_file='latest.xml')
-    scan = {}
-
-    ::Nmap::XML.new(input_file) do |xml|
-      xml.each_host do |host|
-        # Don't list a host if it doesn't have open ports
-        next if host.open_ports.empty?
-        scan[host.ip] = []
-        host.each_port do |port|
-          # Require port state to be open, we don't care about non-open ports
-          if port.state == :open
-            scan[host.ip] << {:port => port.number, :protocol => port.protocol, :state => port.state}
-          end
-        end
-      end
-    end
-
-    scan
-  end
-
   def send2s3(upload_file='latest.xml')
-    key = ENV['SCAN_NETWORK'].gsub(/\//,"_") + ".json"
+    key = "xml/" + ENV['SCAN_NETWORK'].gsub(/\//,"_") + ".xml"
 
     puts "[+] Started uploading #{key} to S3"
 
@@ -60,7 +40,7 @@ class Agent
     resp = client.put_object({
       bucket: ENV['AWS_S3_BUCKET'],
       key: key,
-      body: parse(upload_file).to_json,
+      body: upload_file,
     })
 
     puts "[+] Finished uploading #{key} to S3"
