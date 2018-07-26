@@ -8,6 +8,7 @@ services:
       - default
     working_dir: /app
     environment:
+      - SCAN_PERSPECTIVE_ID=eaa1141f-89ac-469b-9439-8fc00d8cec4d
       - SCAN_NETWORK=192.168.10.1/32
       - SCAN_TCP_PORTS=20,21,22,23,25,80,110,443,512,522,8080,1080,22222
       - SCAN_COOLOFF=60
