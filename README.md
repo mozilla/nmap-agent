@@ -42,4 +42,4 @@ a simple lambda function, which is run on any file that changes in an S3 bucket 
 
 # nmap-policy (TBD)
 
-a policy/expectations framework for simplified NMAP JSON files
+a policy/expectations framework for decribing service expectations for a given perspective

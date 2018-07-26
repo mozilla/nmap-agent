@@ -16,8 +16,8 @@ module NmapAgent
     def port_scan(output_file='latest.xml')
       has_required_envs?(
         [
+          'SCAN_NETWORK',
           'SCAN_TCP_PORTS',
-          'SCAN_NETWORK'
         ]
       )
 
@@ -45,9 +45,9 @@ module NmapAgent
         [
           'SCAN_NETWORK',
           'SCAN_PERSPECTIVE_ID',
+          'AWS_S3_BUCKET',
           'AWS_ACCESS_KEY_ID',
           'AWS_SECRET_ACCESS_KEY',
-          'AWS_S3_BUCKET'
         ]
       )
 
